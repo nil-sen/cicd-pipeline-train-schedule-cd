@@ -10,10 +10,10 @@ pipeline {
         }
         stage('DeployToStaging') {
             when {
-                branch 'master'
+                branch 'example-solution'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: ‘centos’, keyFileVariable: ‘private_key’, passphraseVariable: ”, usernameVariable: ”)]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
