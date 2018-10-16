@@ -21,9 +21,6 @@ pipeline {
                         publishers: [
                             sshPublisherDesc(
                                 configName: 'staging',
-                                sshCredentials: [
-                                    username: 'centos'
-                                ], 
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
