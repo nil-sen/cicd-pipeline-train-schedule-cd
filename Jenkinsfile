@@ -13,7 +13,7 @@ pipeline {
                 branch 'example-solution'
             }
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: ‘centos’, keyFileVariable: ‘private_key’, passphraseVariable: ”, usernameVariable: ”)]) {
+                withCredentials([sshUserPrivateKey(credentialsId: ‘CentOS_EC2_login’, keyFileVariable: ‘private_key’, passphraseVariable: ”, usernameVariable: ’centos’)]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
@@ -21,8 +21,7 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
-                                    username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
+                                    username: "$USERNAME"
                                 ], 
                                 transfers: [
                                     sshTransfer(
