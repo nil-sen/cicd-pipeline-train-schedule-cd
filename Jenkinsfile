@@ -14,7 +14,7 @@ pipeline {
                 branch 'example-solution'
             }
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: ‘CentOS_EC2_login’, keyFileVariable: ‘private_key’, passphraseVariable: ”, usernameVariable: ’centos’)]) {
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'CentOS_EC2_login', keyFileVariable: 'EC2_login', passphraseVariable: '', usernameVariable: 'centos')]){
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
